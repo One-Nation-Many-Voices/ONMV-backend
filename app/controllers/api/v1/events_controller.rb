@@ -4,4 +4,8 @@ class Api::V1::EventsController < ApplicationController
     render json: Event.all
   end
 
+  def show
+    
+  end
+
 end
