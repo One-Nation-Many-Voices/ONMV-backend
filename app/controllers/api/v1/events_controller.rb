@@ -5,7 +5,7 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def show
-    
+    render json: Event.find(params[:id])
   end
 
 end
