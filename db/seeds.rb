@@ -9,6 +9,7 @@
 # require_relative '../csv/Town_Hall_Projects.csv'
 require 'csv'
 require_relative '../app/models/event.rb'
+require 'time'
 
 Event.destroy_all
 
@@ -28,7 +29,8 @@ class Sanitation
       # byebug
       puts row[:location]
       Event.create(name: name(row),
-      representative_name: representative_name(row),
+      rep_first_name: rep_first_name(row),
+      rep_last_name: rep_last_name(row),
       location: location(row),
       street: street(row),
       city: city(row),
@@ -50,9 +52,18 @@ class Sanitation
   end
 
   def representative_name(row)
-    if !row[:member].nil?
-      row[:member].chomp
+    if row[:member]
+      full_name = row[:member].chomp.split
     end
+    full_name
+  end
+
+  def rep_first_name(row)
+    representative_name(row)[0]
+  end
+
+  def rep_last_name(row)
+    representative_name(row)[1]
   end
 
   def location(row)
@@ -100,6 +111,8 @@ class Sanitation
   def time(row)
     if row[:time]
       row[:time]
+      # time = row[:time][0..7].to_time
+      # time.strftime("%H:%M %p")
     end
   end
 
