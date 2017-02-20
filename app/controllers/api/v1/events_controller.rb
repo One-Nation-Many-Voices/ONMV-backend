@@ -1,10 +1,6 @@
 class Api::V1::EventsController < ApplicationController
 
   before_filter :set_headers
-  protected
-  def set_headers
-    response.headers['Access-Control-Allow-Origin'] = '*'
-  end
 
   def index
     render json: Event.all
@@ -14,6 +10,11 @@ class Api::V1::EventsController < ApplicationController
     render json: Event.find(params[:id])
   end
 
+  protected
+  def set_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'GET, OPTIONS'
+  end
 
 
 end
