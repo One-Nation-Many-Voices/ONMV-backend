@@ -1,24 +1,17 @@
-# README
+# One Nation Many Voices Back End
+This application is a companion for OMNV, which is a mobil app built in react. This application seeds data from a publicly available CSV that lists local Town Hall meetings and their associated information, such as time, place, and representative. The database holds a single table with this data.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tech Stack
 
-Things you may want to cover:
+This application uses Rails 5.0.1
 
-* Ruby version
+## Setup
 
-* System dependencies
+* Clone this repo
+* Bundle
+* Run the command `rspec` to run the tests
 
-* Configuration
+## API Endpoint
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* `GET /api/v1/events` returns all of the events seeded in the database
+* `GET /api/v1/events/:id` returns data for a specific event based on id
